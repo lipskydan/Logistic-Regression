@@ -63,3 +63,7 @@ class LogisticRegressionGD(object):
     def net_input(self, X):
         """Calculate net input"""
         return np.dot(X, self.w_[1:]) + self.w_[0]
+
+    def activation(self, z):
+        """Compute logistic sigmoid activation"""
+        return 1. / (1. + np.exp(-np.clip(z, -250, 250)))
