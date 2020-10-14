@@ -2,6 +2,7 @@ import numpy as np
 
 from sklearn import datasets
 from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
 
 # First steps with scikit-learn
 # Loading the Iris dataset from scikit-learn.
@@ -21,6 +22,13 @@ X_train, X_test, y_train, y_test = train_test_split(
 print('Labels counts in y:', np.bincount(y))
 print('Labels counts in y_train:', np.bincount(y_train))
 print('Labels counts in y_test:', np.bincount(y_test))
+
+# Standardizing the features:
+
+sc = StandardScaler()
+sc.fit(X_train)
+X_train_std = sc.transform(X_train)
+X_test_std = sc.transform(X_test)
 
 # class LogisticRegressionGD(object):
 #     """Logistic Regression Classifier using gradient descent.
