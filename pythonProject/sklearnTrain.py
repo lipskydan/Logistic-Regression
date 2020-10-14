@@ -18,7 +18,6 @@ y = iris.target
 
 print('Метки классов:', np.unique(y))
 
-
 # Splitting data into 70% training and 30% test data:
 
 X_train, X_test, y_train, y_test = train_test_split(
@@ -46,7 +45,6 @@ print(f'Неправильно классифицированных образц
 print(f'Правильность: {accuracy_score(y_test, y_pred)} %')
 print(f'Правильность: {ppn.score(X_test_std, y_test)} %')
 
-
 X_combined_std = np.vstack((X_train_std, X_test_std))
 y_combined = np.hstack((y_train, y_test))
 
@@ -58,4 +56,29 @@ plt.legend(loc='upper left')
 
 plt.tight_layout()
 plt.savefig('images/sklearnTrain/solution_area_graph.png', dpi=300)
-# plt.show()
+plt.show()
+
+
+# sigmoid function
+
+def sigmoid(z):
+    return 1.0 / (1.0 + np.exp(-z))
+
+
+z = np.arange(-7, 7, 0.1)
+phi_z = sigmoid(z)
+
+plt.plot(z, phi_z)
+plt.axvline(0.0, color='k')
+plt.ylim(-0.1, 1.1)
+plt.xlabel('z')
+plt.ylabel('$\phi (z)$')
+
+# y axis ticks and gridline
+plt.yticks([0.0, 0.5, 1.0])
+ax = plt.gca()
+ax.yaxis.grid(True)
+
+plt.tight_layout()
+plt.savefig('images/sklearnTrain/sigmoid_function.png', dpi=300)
+plt.show()
