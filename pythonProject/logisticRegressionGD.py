@@ -1,3 +1,5 @@
+import numpy as np
+
 class LogisticRegressionGD(object):
     """Logistic Regression Classifier using gradient descent.
 
@@ -57,3 +59,7 @@ class LogisticRegressionGD(object):
             cost = -y.dot(np.log(output)) - ((1 - y).dot(np.log(1 - output)))
             self.cost_.append(cost)
         return self
+
+    def net_input(self, X):
+        """Calculate net input"""
+        return np.dot(X, self.w_[1:]) + self.w_[0]
